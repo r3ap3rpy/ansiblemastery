@@ -2,7 +2,7 @@
 
 This repository holds the course materials for my course on udemy and skillshare.
 
-This course is very long and is intended to give you all the skills to handle a ground up setup of an ansible environment which is based on version *2.9*.
+This course is very long and is intended to give you all the skills to handle a ground up setup of an ansible environment which is based on version [2.9](https://docs.ansible.com/ansible/2.9/index.html).
 
 This environment consists of:
 - linux master (CentOS 8.2)
