@@ -1,3 +1,3 @@
 ### Environment
 
-![env](/pics/env.png)
+![env](../pics/env.png)
