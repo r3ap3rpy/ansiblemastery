@@ -11,7 +11,7 @@ This environment consists of:
 - cisco router (c7200)
 
 The following guides will be available.
-- [/guides/env.md]
-- [/guides/anssetup.md]
+- [Environment](/guides/env.md)
+- [Setup](/guides/anssetup.md)
 
 ![intro](/pics/Intro.png)
