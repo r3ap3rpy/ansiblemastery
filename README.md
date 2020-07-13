@@ -12,6 +12,6 @@ This environment consists of:
 
 The following guides will be available.
 - [Environment](/guides/env.md)
-- [Setup](/guides/anssetup.md)
+- [Setup](/guides/amas.md)
 
 ![intro](/pics/Intro.png)
