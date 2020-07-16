@@ -42,3 +42,22 @@ Host *
 ```
 
 Now we can use the pub-key authentication to login, and have passwordless sudo.
+All that is left is to setup ansible.
+
+We need to install the repo which holds ansible packages.
+
+``` bash
+sudo yum install epel-release -y
+```
+
+Now we can install ansible.
+
+``` bash
+sudo yum install ansible -y
+```
+
+After this is complete we can do an adjustment to allow *sudo*-less editing of our ansible files.
+
+``` bash
+sudo chown ansible.ansible -R /etc/ansible
+```

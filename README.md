@@ -12,6 +12,8 @@ This environment consists of:
 
 The following guides will be available.
 - [Environment](/guides/env.md)
-- [Setup](/guides/amas.md)
+- [Management Setup](/guides/amas.md)
+- [Linux Clients](/guides/lin.md)
+- [Windows Clients](/guides/win.md)
 
 ![intro](/pics/Intro.png)
