@@ -1,6 +1,6 @@
-### Win - basic authentication
+## Win - basic authentication
 
-First the basic authentication is demonstrated. 
+#### Basic authentication
 
 We are goint to have to install the pywinrm module on the ansible manangement server.
 
@@ -45,3 +45,83 @@ Then you must be able to issue the following command on the management server.
 ```bash
 ansible -m win_ping 2019A
 ```
+
+#### Certificate based
+
+Let's generate a self signed certificated, on our centos machine.
+``` bash
+# Set the name of the local user that will have the key mapped to
+
+cat > openssl.conf << EOL
+distinguished_name = req_distinguished_name
+[req_distinguished_name]
+[v3_req_client]
+extendedKeyUsage = clientAuth
+subjectAltName = otherName:1.3.6.1.4.1.311.20.2.3;UTF8:ansible@localhost
+EOL
+
+export OPENSSL_CONF=openssl.conf
+
+openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -out cert.pem -outform PEM -keyout cert_key.pem -subj "/CN=ansible" -extensions v3_req_client
+```
+
+Import the certificate to the certificate store, Trusted People and Trusted root CA
+
+Generate a selfsigned cert on the windows machine!
+
+``` powershell
+New-SelfSignedCertificate -DnsName 2019A -KeyLocation Cert:\LocalMachine\My\
+```
+
+Configure the winrm listener.
+
+``` bash
+winrm create winrm/config/Listener?Address=*+Transport=HTTPS @{Hostname="2019A";CertificateThumbprint="828F238786FE722A55420BE9209A93B996B8CEDF"}
+
+winrm enumerate winrm/config/Listener
+```
+
+Map the user to the credentials.
+
+``` cmd
+winrm create winrm/config/service/certmapping?Issuer=50988BCCAF7371814D722E34CDC77A0FF0DE212A+Subject=ansible@localhost+URI=* @{UserName = "ansible";Password="*********************"}
+```
+
+Last setting on windows is to enable certificate based authentication.
+
+``` cmd
+winrm set winrm/config/service/Auth @{Certificate="true"}
+```
+
+You need to create the user on the windows machine and add it to the *Administrators* localgroup.
+
+On the ansible server you need to modify some stuff.
+
+Create a folder called */etc/ansible/certs*, move the *cert.pem* and *cert_key.pem* in there.
+
+Now create the file */etc/ansible/group_vars/wincert.yaml* with the following content.
+
+``` yaml
+---
+ansible_connection: winrm
+ansible_winrm_transport: certificate
+ansible_winrm_cert_pem: /etc/ansible/certs/cert.pem
+ansible_winrm_cert_key_pem: /etc/ansible/certs/cert_key.pem
+ansible_port: 5986
+ansible_winrm_scheme: https
+ansible_winrm_server_cert_validation: ignore
+```
+
+Now add the following lines to the */etc/ansible/hosts* file.
+
+``` yaml
+[wincert]
+2019A
+```
+
+If all went wenn the *ansible -m win_ping 2019A* should return green!
+
+#### NTLM and Kerberos
+
+
+#### Cred
