@@ -183,6 +183,25 @@ Add the group that holds the server to the */etc/ansible/hosts*
 2019A
 ```
 
+You need to make sure that both the domain and the domain controllers are resolvable by the centos host.
+
+Add the following to your */etc/hosts*
+
+``` bash
+192.168.56.5 2019A
+192.168.56.5 REDWOOD.LOCAL
+```
+
+You also need to edit the kerberos configuration file under */etc/krb5.conf*
+
+``` bash
+[realms]
+ REDWOOD.LOCAL = {
+     kdc = 2019A
+     admin_server = 2019A
+ }
+```
+
 If you have to create a user and adjust the configuration, but the following command should work if you went video by video.
 
 ``` bash
@@ -195,4 +214,4 @@ ansible -m win_ping 2019A
 
 #### Authentication overvies
 
-![auth](/pics/ansibleauthentication.PNG)
+![auth](/pics/ansibleauth.PNG)

@@ -1,0 +1,8 @@
+---
+- hosts: ubuntu
+  gather_facts: no
+  tasks:
+  - name: "Create test under /tmp"
+    file:
+      path: /tmp/testfile
+      state: file

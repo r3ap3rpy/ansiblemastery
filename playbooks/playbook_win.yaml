@@ -1,0 +1,8 @@
+---
+- hosts: 2019A
+  gather_facts: no
+  tasks:
+  - name: "Create a file under C:\\temp"
+    win_file:
+      path: C:\temp\testdir
+      state: directory

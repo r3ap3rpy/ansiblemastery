@@ -1,0 +1,8 @@
+---
+- hosts: 2019A
+  gather_facts: no
+  tasks:
+  - name: "Create folder under c:\\temp called {{folder}}"
+    win_file:
+      path: C:\temp\{{folder}}
+      state: directory
