@@ -1,4 +1,4 @@
-## Win - basic authentication
+## Windows setup
 
 #### Basic authentication
 
@@ -46,7 +46,7 @@ Then you must be able to issue the following command on the management server.
 ansible -m win_ping 2019A
 ```
 
-#### Certificate based
+#### Certificate authentication
 
 Let's generate a self signed certificated, on our centos machine.
 ``` bash
@@ -121,7 +121,78 @@ Now add the following lines to the */etc/ansible/hosts* file.
 
 If all went wenn the *ansible -m win_ping 2019A* should return green!
 
-#### NTLM and Kerberos
+#### NTLM Authentication
+
+You need to have a domain based environment with an account with appropriate privileges to do this.
+
+I have created the *ansible* user and added it to the *Domain Admins* group, not secure and not advised either.
+
+On the centos machine i have added this to the */etc/ansible/hosts* file
+
+``` yaml
+[winntlm]
+2019A
+```
+
+I have created the following file under group_vars: */etc/ansible/group_vars/winntlm.yml* with this content.
+
+``` yaml
+---
+ansible_winrm_transport: ntlm
+ansible_winrm_port: 5985
+ansible_user: ansible
+ansible_password: Start!123
+ansible_connection: winrm
+```
+
+The following command should work.
+
+``` bash
+ansible -m win_ping 2019A
+```
+
+#### Kerberos Authentication
+
+On the centos machine you need these packages installed.
+
+``` bash
+yum install python3-devel krb5-devel krb5-workstation krb5-libs gcc -y 
+```
+
+Then you need to install the following python module.
+
+``` bash
+python3 -m pip install pywinrm[kerberos]
+```
+
+Then create the */etc/ansible/group_vars/winkerberos.yml* with the following content.
+
+``` yaml
+---
+ansible_user: ansible@REDWOOD.LOCAL
+ansible_password: Start!123
+ansible_connection: winrm
+ansible_winrm_port: 5985
+ansible_winrm_transport: kerberos
+```
+
+Add the group that holds the server to the */etc/ansible/hosts*
+
+``` yaml
+[winkerberos]
+2019A
+```
+
+If you have to create a user and adjust the configuration, but the following command should work if you went video by video.
+
+``` bash
+ansible -m win_ping 2019A
+```
+
+#### CredSSP Authentication
 
 
-#### Cred
+
+#### Authentication overvies
+
+![auth](/pics/ansibleauthentication.PNG)
