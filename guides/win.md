@@ -242,7 +242,7 @@ You should be able to ping your windows machine with the following command.
 ansible -m win_ping 2019A
 ```
 
-#### Authentication overvies
+#### Authentication overview
 
 |     Type    | Local Accounts | Active Directory Accounts | Client Delegation | HTTPS Encryption |
 |:-----------:|:--------------:|:-------------------------:|:-----------------:|:----------------:|
