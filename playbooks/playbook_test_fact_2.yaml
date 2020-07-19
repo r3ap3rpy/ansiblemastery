@@ -1,0 +1,17 @@
+---
+- hosts: all
+  gather_facts: yes
+  vars:
+    - win: C:\temp\testfact
+    - lin: /tmp/testfact
+  tasks:
+  - name: "Create {{lin}} on Linux systems!"
+    file:
+      path: "{{lin}}"
+      state: directory
+    when: ansible_os_family == "Debian"
+  - name: "Create {{win}} on Windows Systems"
+    win_file:
+      path: "{{win}}"
+      state: directory
+    when: ansible_os_family == "Windows"

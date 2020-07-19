@@ -1,0 +1,9 @@
+---
+- hosts: ubuntu
+  gather_facts: no
+  tasks:
+  - name: "Create a folder based on ansible_os_family"
+    file:
+      path: /tmp/testredis
+      state: directory
+    when: ansible_os_family == "Debian"

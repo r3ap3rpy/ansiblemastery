@@ -1,0 +1,10 @@
+---
+- hosts: ubuntu
+  gather_facts: no
+  tasks:
+  - name: "Create a file if not present!"
+    file:
+      path: /tmp/settings
+      state: touch
+  - name: "Sleep for 3 seconds"
+    command: "sleep 3"

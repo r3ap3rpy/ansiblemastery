@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: no
+  tasks:
+  - name: "Setup"
+    setup:
+    register: output
+  - name: "Whats the output"
+    debug:
+      msg: "{{output}}"

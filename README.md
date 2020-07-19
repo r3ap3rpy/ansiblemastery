@@ -16,5 +16,6 @@ The following guides will be available.
 - [Linux Clients](/guides/lin.md)
 - [Windows Clients](/guides/win.md)
 - [Usefull config](/guides/usefull.md)
+- [Fact caching](/guides/fact_cache.md)
 
 ![intro](/pics/Intro.png)
