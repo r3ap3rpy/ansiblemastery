@@ -15,5 +15,6 @@ The following guides will be available.
 - [Management Setup](/guides/amas.md)
 - [Linux Clients](/guides/lin.md)
 - [Windows Clients](/guides/win.md)
+- [Usefull config](/guides/usefull.md)
 
 ![intro](/pics/Intro.png)
