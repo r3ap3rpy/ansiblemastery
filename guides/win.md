@@ -210,8 +210,44 @@ ansible -m win_ping 2019A
 
 #### CredSSP Authentication
 
+On the windows machine you need to open a powershell console and issue the following command.
 
+``` powershell
+Enable-WSManCredSSP -Role Server -Force
+```
+
+This configured the WSman for CredSSP authentication.
+
+Now on the centos machine you need to create the */etc/ansible/group_vars/wincredssp.yml* with the following content.
+
+``` yaml
+---
+ansible_user: ansible
+ansible_password: Start!123
+ansible_port: 5985
+ansible_connection: winrm
+ansible_winrm_transport: credssp
+```
+
+Then add your host to the appropriate group.
+
+``` yaml
+[wincredssp]
+2019A
+```
+
+You should be able to ping your windows machine with the following command.
+
+``` bash
+ansible -m win_ping 2019A
+```
 
 #### Authentication overvies
 
-![auth](/pics/ansibleauth.PNG)
+|     Type    | Local Accounts | Active Directory Accounts | Client Delegation | HTTPS Encryption |
+|:-----------:|:--------------:|:-------------------------:|:-----------------:|:----------------:|
+|    BASIC    |       YES      |             NO            |         NO        |        NO        |
+| CERTIFICATE |       YES      |             NO            |         NO        |        NO        |
+|   KERBEROS  |       NO       |            YES            |        YES        |        YES       |
+|     NTLM    |       YES      |            YES            |         NO        |        YES       |
+|   CREDSSP   |       YES      |            YES            |        YES        |        YES       |
