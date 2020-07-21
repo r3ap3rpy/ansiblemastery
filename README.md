@@ -17,5 +17,6 @@ The following guides will be available.
 - [Windows Clients](/guides/win.md)
 - [Usefull config](/guides/usefull.md)
 - [Fact caching](/guides/fact_cache.md)
+- [Dynamic Inventory](/guides/dyn.md)
 
 ![intro](/pics/Intro.png)
