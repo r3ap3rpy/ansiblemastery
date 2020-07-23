@@ -1,0 +1,13 @@
+---                                               
+- hosts: "{{targets}}"                            
+  become: yes                                     
+  gather_facts: no                                
+  vars_files:                                     
+    - /etc/ansible/group_vars/cisco.yaml          
+  tasks:                                          
+  - name: "Decomission all the ports"             
+    ios_config:                                   
+      lines:                                      
+        - shutdown                                
+      parents: "{{item}}"                         
+    with_items: "{{interfaces}}"                  

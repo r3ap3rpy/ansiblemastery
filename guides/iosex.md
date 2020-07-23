@@ -31,3 +31,24 @@ cisco_tshoot_commands:
 ```
 
 Now the depenencies are detached from the playbook.
+
+##### Port decomission
+
+This tutorial shows you how  you can use the *vars_files* to read data for decomissioning ports on ciso devices.
+
+First we need to add some extra data to the */etc/ansible/group_vars/cisco.yaml* file.
+
+``` yaml
+interfaces:
+  - int gi 1/0
+  - int serial 2/0
+  - int serial 2/1
+  - int serial 2/2
+  - int serial 2/3
+  - int serial 2/4
+  - int serial 2/5
+  - int serial 2/6
+  - int serial 2/7
+```
+
+Then you can use the *port_decomission.yaml* playbook to try out the example.
