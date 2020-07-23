@@ -1,0 +1,14 @@
+---
+- hosts: "{{targets}}"
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: "Issue the necessary commands!"
+    ios_command:
+      commands: "{{cisco_tshoot_commands}}"
+    register: output
+  - name: "Save output to /tmp/{{inventory_hostname}}_tshoot.txt"
+    copy:
+      content: "{{output.stdout}}"
+      dest: /tmp/{{inventory_hostname}}_tshoot.txt
+    delegate_to: localhost

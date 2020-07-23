@@ -21,5 +21,6 @@ The following guides will be available.
 - [Dynamic Inventory](/guides/dyn.md)
 - [Roles](/guides/roles.md)
 - [Group Variables](/guides/groupvars.md)
+- [IOS Playbooks](/guides/iosex.md)
 
 ![intro](/pics/Intro.png)
