@@ -15,6 +15,7 @@ The following guides will be available.
 - [Management Setup](/guides/amas.md)
 - [Linux Clients](/guides/lin.md)
 - [Windows Clients](/guides/win.md)
+- [Network Clients](/guides/net.md)
 - [Usefull config](/guides/usefull.md)
 - [Fact caching](/guides/fact_cache.md)
 - [Dynamic Inventory](/guides/dyn.md)
