@@ -24,6 +24,7 @@ We need to improve our playbook, and detach two dependencies, one is the hardcod
 The *network_tshoot_v2.yaml* playbook reflects these changes, only the */etc/ansible/group_vars/cisco.yml* needs to be expanded with the following values.
 
 ``` yaml
+tshoot_path: "/tmp/{{inventory_hostname}}_tshoot.txt"
 cisco_tshoot_commands:
   - "show version"
   - "show ip int brief"
@@ -52,3 +53,31 @@ interfaces:
 ```
 
 Then you can use the *port_decomission.yaml* playbook to try out the example.
+
+##### Configuration backup
+
+This tutorial shows you how to use the *ios_config* module to backup your configuration on IOS devices in an efficient way.
+You do not have to edit any other files. just use the *backup_config.yaml* playbook and enjoy the outcome.
+
+##### HSRP Configuration
+
+HSRP provides you with a floating IP, that is not bound to any interface but provided by 2 interfaces of separate network devices.
+
+For this to work you need to modify the */etc/ansible/hosts* and add the new router.
+
+``` yaml
+[cisco]
+c7200
+c72002
+```
+
+After that under the */etc/hosts* you need to make sure the name resolution is working so add the following line.
+
+``` bash
+192.168.56.11 c72002
+```
+
+The floating IP which will be configured is the *192.168.56.100*.
+The playbook *conf_hsrp.yaml* does that.
+
+After the playbook executes you need to ensure that the ping is working against the *192.168.56.100*.

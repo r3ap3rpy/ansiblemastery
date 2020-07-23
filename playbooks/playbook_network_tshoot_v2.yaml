@@ -5,10 +5,10 @@
   tasks:
   - name: "Issue the necessary commands!"
     ios_command:
-      commands: "{{cisco_tshoot_commands}}"
+      commands: "{{tshoot_commands}}"
     register: output
-  - name: "Save output to /tmp/{{inventory_hostname}}_tshoot.txt"
+  - name: "Save output to {{tshoot_path}}"
     copy:
       content: "{{output.stdout}}"
-      dest: /tmp/{{inventory_hostname}}_tshoot.txt
+      dest: "{{tshoot_path}}"
     delegate_to: localhost

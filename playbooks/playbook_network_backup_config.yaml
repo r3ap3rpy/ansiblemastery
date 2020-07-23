@@ -1,0 +1,11 @@
+---
+- hosts: "{{targets}}"
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: "Backup config from {{inventory_hostname}}"
+    ios_config:
+      backup: yes
+      backup_options:
+        filename: "{{inventory_hostname}}_backup.cfg"
+        dir_path: "{{dirpath}}"
