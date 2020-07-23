@@ -1,0 +1,13 @@
+---
+- hosts: lin
+  gather_facts: no
+  tasks:
+  - name: "first"
+    debug:
+      msg: "{{specialvar}}"
+  - name: "second"
+    debug:
+      msg: "{{anotherspecial}}"
+  - name: "third"
+    debug:
+      msg: "{{thirdspecial}}"

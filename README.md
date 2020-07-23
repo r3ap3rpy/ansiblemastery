@@ -19,5 +19,7 @@ The following guides will be available.
 - [Usefull config](/guides/usefull.md)
 - [Fact caching](/guides/fact_cache.md)
 - [Dynamic Inventory](/guides/dyn.md)
+- [Roles](/guides/roles.md)
+- [Group Variables](/guides/groupvars.md)
 
 ![intro](/pics/Intro.png)

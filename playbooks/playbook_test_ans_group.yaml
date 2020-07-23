@@ -1,0 +1,17 @@
+---
+- hosts: ans
+  gather_facts: no
+  tasks:
+  - name: "Favourite editor(s)"
+    debug:
+      msg: "{{editor}}"
+
+  - name: "Mandatory package(s)"
+    debug:
+      msg: "{{packages}}"
+  - name: "Coming from *all* "
+    debug:
+      msg: "{{prod_user}}"
+  - name: "Inherited from *secret*"
+    debug:
+      msg: "{{classified}}"

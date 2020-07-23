@@ -1,0 +1,6 @@
+---
+- hosts: ubuntu
+  gather_facts: no
+  become: yes
+  roles:
+    - role: linux/texteditor

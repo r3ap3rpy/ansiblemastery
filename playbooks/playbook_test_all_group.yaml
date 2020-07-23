@@ -1,0 +1,7 @@
+---
+- hosts: lin
+  gather_facts: no
+  tasks:
+  - name: "Prod Credentials"
+    debug:
+      msg: "user: {{prod_user}}, password: {{prod_password}}"
