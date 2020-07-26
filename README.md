@@ -23,5 +23,6 @@ The following guides will be available.
 - [Group Variables](/guides/groupvars.md)
 - [IOS Playbooks](/guides/iosex.md)
 - [Handlers](/guides/handlers.md)
+- [Asserting](/guides/assert/md)
 
 ![intro](/pics/Intro.png)

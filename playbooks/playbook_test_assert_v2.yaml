@@ -1,0 +1,9 @@
+---                                         
+- hosts: ubuntu                             
+  become: no                                
+  gather_facts: no                          
+  tasks:                                    
+  - name: "Check if arg is good!"           
+    assert:                                 
+      that:                                 
+        - "myarg|int <= 100"                

@@ -1,0 +1,14 @@
+---
+- hosts: ubuntu
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: "Get the ssd config"
+    command: cat /etc/ssh/sshd_config
+    register: sshd_config
+  - name: "Verify the config"
+    assert:
+      that:
+        "'#Port 22' in sshd_config.stdout_lines"
+      success_msg: "All in place!"
+      fail_msg: "Something is off!"
