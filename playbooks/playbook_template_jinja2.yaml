@@ -1,0 +1,12 @@
+---                                          
+- hosts: ubuntu                              
+  become: no                                 
+  gather_facts: no                           
+  vars:                                      
+    - username: daniel                       
+    - password: whatever                     
+  tasks:                                     
+  - name: Apply jinja2 template              
+    template:                                
+      src: test_conf.j2                      
+      dest: /tmp/config.ini                  

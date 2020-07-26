@@ -24,5 +24,6 @@ The following guides will be available.
 - [IOS Playbooks](/guides/iosex.md)
 - [Handlers](/guides/handlers.md)
 - [Asserting](/guides/assert.md)
+- [Jinja2](/guides/jinja.md)
 
 ![intro](/pics/Intro.png)
