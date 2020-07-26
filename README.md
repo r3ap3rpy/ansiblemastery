@@ -22,5 +22,6 @@ The following guides will be available.
 - [Roles](/guides/roles.md)
 - [Group Variables](/guides/groupvars.md)
 - [IOS Playbooks](/guides/iosex.md)
+- [Handlers](/guides/handlers.md)
 
 ![intro](/pics/Intro.png)

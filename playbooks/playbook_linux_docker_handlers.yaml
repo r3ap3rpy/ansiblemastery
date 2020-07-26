@@ -1,0 +1,27 @@
+---
+- hosts: ubuntu
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: "We install docker.io!"
+    apt:
+      name: docker.io
+      state: present
+    notify:
+      - enable docker
+  - name: "Add ansible to docker group!"
+    user:
+      name: ansible
+      groups: docker
+      append: yes
+    notify:
+      - start docker
+  handlers:
+  - name: enable docker
+    systemd:
+      name: docker
+      enabled: yes
+  - name: start docker
+    service:
+      name: docker
+      state: restarted
