@@ -1,0 +1,48 @@
+---
+- hosts: lin
+  become: yes
+  gather_facts: yes
+  vars:
+    - tier: production
+  tasks:
+  - name: "Install if Debian"
+    apt:
+      name: apache2
+      state: latest
+    when: ansible_os_family == 'Debian'
+  - name: "Install if RedHat"
+    yum:
+      name: httpd
+      state: latest
+    when: ansible_os_family == 'RedHat'
+  - name: "Enabled service if debian"
+    systemd:
+      name: apache2
+      enabled: yes
+    when: ansible_os_family == 'Debian'
+  - name: "Enabled service if redhat"
+    systemd:
+      name: httpd
+      enabled: yes
+    when: ansible_os_family == 'RedHat'
+  - name: "Service is running on Debian"
+    service:
+      name: apache2
+      state: started
+    when: ansible_os_family == 'Debian'
+  - name: "Service is running on RedHat"
+    service:
+      name: httpd
+      state: started
+    when: ansible_os_family == 'RedHat'
+  - name: "Stop firewall on redhat"
+    service:
+      name: firewalld
+      state: stopped
+    when: ansible_os_family == 'RedHat'
+  - name: "Copy template to /var/www/html/index.html"
+    template:
+      src: index.j2
+      dest: /var/www/html/index.html
+      owner: root
+      group: root
