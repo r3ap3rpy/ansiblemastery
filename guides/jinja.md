@@ -5,4 +5,4 @@ It allows you to create files based on ansible variables and harness the framewo
 
 Check out the *template_jinja2.yaml* for this guidem and the *test_conf.j2* template for a simple headstart.
 
-A more complex demonstration comes from the *jinja_apache.yaml* and *test_index.j2* template file.
+<!-- A more complex demonstration comes from the *jinja_apache.yaml* and *test_index.j2* template file. -->

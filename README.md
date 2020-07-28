@@ -25,5 +25,5 @@ The following guides will be available.
 - [Handlers](/guides/handlers.md)
 - [Asserting](/guides/assert.md)
 - [Jinja2](/guides/jinja.md)
-
+- [CMDB](/guides/cmdb.md)
 ![intro](/pics/Intro.png)
