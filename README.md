@@ -26,4 +26,6 @@ The following guides will be available.
 - [Asserting](/guides/assert.md)
 - [Jinja2](/guides/jinja.md)
 - [CMDB](/guides/anscmdb.md)
+- [Docker](/guides/docker.md)
+
 ![intro](/pics/Intro.png)
