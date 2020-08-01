@@ -269,3 +269,11 @@ default_users:
 
 Then you can execute the playbook *win_local_user.yaml* to provision your users.
 
+Third one is about local groups, where you can use the *win_local_groups.yaml* playbook, but before that you need to edit the */etc/ansible/group_vars/all.yaml* file with the following content.
+
+``` yaml
+default_groups:
+  - sdagents
+  - bqaagents
+  - testeragents
+```
