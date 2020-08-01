@@ -1,0 +1,11 @@
+---
+- hosts: ubuntu
+  become: no
+  gather_facts: no
+  tasks:
+  - name: "Gather host info"
+    docker_host_info:
+    register: result
+  - name: "Show host info"
+    debug:
+      msg: "{{result}}"

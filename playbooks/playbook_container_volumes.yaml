@@ -1,0 +1,14 @@
+---
+- hosts: ubuntu
+  become: no
+  gather_facts: no
+  tasks:
+  - name: "Create a volume"
+    docker_volume:
+      name: webappstorage
+  - name: "Create a brtfs volume on path"
+    docker_volume:
+      name: brtfsstorage
+      driver_options:
+        type: brtfs
+        device: /dev/sda9

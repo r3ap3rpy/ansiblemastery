@@ -1,0 +1,16 @@
+---
+- hosts: ubuntu
+  become: no
+  gather_facts: no
+  tasks:
+  - name: "Get the container info for {{cont}}!"
+    docker_container_info:
+      name: "{{cont}}"
+    register: output
+  - name: "Check if exists!"
+    debug:
+      msg: "The container {{cont}} {{ 'exists' if output.exists else 'not present'}}"
+  - name: "Show the details if {{cont}}  exists!"
+    debug:
+      msg: "{{output.container}}"
+    when: output.exists

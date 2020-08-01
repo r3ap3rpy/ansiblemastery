@@ -251,3 +251,21 @@ ansible -m win_ping 2019A
 |   KERBEROS  |       NO       |            YES            |        YES        |        YES       |
 |     NTLM    |       YES      |            YES            |         NO        |        YES       |
 |   CREDSSP   |       YES      |            YES            |        YES        |        YES       |
+
+
+### Dem playbooks
+
+The first playbook is about gathering disk information from windows systems. Check out the *win_disk_facts.yaml* for further reference.
+
+The second playbook to work you need to edit the */etc/ansible/group_vars/all.yaml* file and add these lines.
+
+``` yaml
+default_users:
+  - sdagent
+  - bqaagent
+  - monitoring
+  - tshoot
+```
+
+Then you can execute the playbook *win_local_user.yaml* to provision your users.
+

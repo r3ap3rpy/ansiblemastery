@@ -1,0 +1,10 @@
+---                                               
+- hosts: 2019A                                    
+  become: no                                      
+  gather_facts: no                                
+  tasks:                                          
+  - name: "Get the disk information!"             
+    win_disk_facts:                               
+  - name: "Present the disk information!"         
+    debug:                                        
+      msg: "{{ansible_facts}}"                    
