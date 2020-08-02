@@ -1,0 +1,21 @@
+---                                                                                                 
+- hosts: 2019A                                                                                      
+  become: no                                                                                        
+  gather_facts: no                                                                                  
+  tasks:                                                                                            
+  - name: "Grab WShark from web"                                                                    
+    win_get_url:                                                                                    
+      url: https://1.eu.dl.wireshark.org/win64/Wireshark-win64-latest.exe                           
+      dest: C:\temp\Wireshark.exe                                                                   
+  - name: "Grab nmap from web"                                                                      
+    win_get_url:                                                                                    
+      url: https://nmap.org/dist/nmap-7.80-setup.exe                                                
+      dest: C:\temp\nmap.exe                                                                        
+  - name: "Install nmap"                                                                            
+    win_shell: |                                                                                    
+      Start-Process -FilePath C:\temp\nmap.exe -ArgumentList "/S" -Wait -NoNewWindow                
+    ignore_errors: yes                                                                              
+  - name: "Install WShark"                                                                          
+    win_shell: |                                                                                    
+      Start-Process -FilePath C:\temp\wireshark.exe -ArgumentList "/NCRC","/S","/desktopicon=yes","/
+quicklaunchicon=yes" -Wait -NoNewWindow                                                             

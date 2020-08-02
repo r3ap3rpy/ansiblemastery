@@ -1,0 +1,12 @@
+---                                                         
+- hosts: 2019A                                              
+  become: no                                                
+  gather_facts: no                                          
+  tasks:                                                    
+  - name: "Provision new colleague with default password!"  
+    win_domain_user:                                        
+      name: newcomer                                        
+      password: Start!123                                   
+      state: present                                        
+      groups:                                               
+        - Domain Users                                      

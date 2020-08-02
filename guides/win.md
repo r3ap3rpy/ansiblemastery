@@ -234,7 +234,7 @@ Then add your host to the appropriate group.
 ``` yaml
 [wincredssp]
 2019A
-```
+<!-- ``` -->
 
 You should be able to ping your windows machine with the following command.
 
@@ -277,3 +277,10 @@ default_groups:
   - bqaagents
   - testeragents
 ```
+
+Lets check out the following videos for tutorials.
+
+- *win_chrome_deploy.yaml*
+- *win_domain_user.yaml*
+- *win_domain_group.yaml*
+- *win_domain_wsharl.yaml*

@@ -1,0 +1,11 @@
+---
+- hosts: 2019A
+  become: no
+  gather_facts: no
+  tasks:
+  - name: "Assign newcomer to the ent admin group!"
+    win_domain_group_membership:
+      name: Enterprise Admins
+      members:
+        - newcomer
+      state: present
