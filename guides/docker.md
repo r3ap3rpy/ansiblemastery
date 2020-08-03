@@ -21,3 +21,37 @@ The third one is about how you can gather information about a specific container
 The last one is about volume management, check out this playbook *container_volumes.yaml*
 
 
+### Centos 8.2
+
+Installing docker is not that big of a fuss, however there is a dependency issue currently which will be definitely resolved. 
+Open up a sudo prompt and issue the following commands.
+
+``` bash
+yum install -y yum-utils
+
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum install -y https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
+
+yum install -y docker-ce docker-ce-cli 
+
+usermod -a -G docker ansible
+
+systemctl enable docker
+systemctl start docker
+```
+
+Now logoff and login, you should be able to use the playbooks on this machine aswell.
+
+Do not forget to install the *docker* module for python.
+
+### Windows Server 2019
+
+You need to grab the [installer](https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe) from the docker hub.
+
+If you are using Hyper-V you need to issue this command on your Host machine.
+
+``` powershell
+Set-VMProcessor -VMName <hostname> -ExposeVirtualizationExtensions $true
+```
+
+Otherwise the docker service will fail to start inside your virtual machine.
