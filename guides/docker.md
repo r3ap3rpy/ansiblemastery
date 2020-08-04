@@ -55,3 +55,11 @@ Set-VMProcessor -VMName <hostname> -ExposeVirtualizationExtensions $true
 ```
 
 Otherwise the docker service will fail to start inside your virtual machine.
+
+ttps://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe
+
+On windows it's not that easy to run or manipulate containers.
+
+Check out the *docker_win.yaml* playbook at first.
+
+Then the *vault_secret.yaml*

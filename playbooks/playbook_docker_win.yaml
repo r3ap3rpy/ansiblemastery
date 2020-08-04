@@ -1,0 +1,17 @@
+---
+- hosts: 2019A
+  become: no
+  gather_facts: no
+  tasks:
+  - name: "Issue docker ps"
+    win_command: docker ps
+    register: output
+  - name: "Show the output"
+    debug:
+      msg: "{{output}}"
+  - name: "Hello World"
+    win_command: docker run -d hello-world
+    register: hello
+  - name: "Show the output"
+    debug:
+      msg: "{{hello}}"
