@@ -1,0 +1,12 @@
+---
+prod_user: ansible
+prod_password: ansible
+default_users:
+  - sdagent
+  - bqaagent
+  - monitoring
+  - tshoot
+default_groups:
+  - sdagents
+  - bqaagents
+  - testeragents

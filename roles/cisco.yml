@@ -1,0 +1,24 @@
+---                                                       
+ansible_user: ansible                                     
+ansible_password: Start123                                
+ansible_connection: network_cli                           
+ansible_network_os: ios                                   
+ansible_become_method: enable                             
+ansible_become_password: Start123                         
+                                                          
+tshoot_path: "/tmp/{{inventory_hostname}}_tshoot.txt"     
+tshoot_commands:                                          
+  - show version                                          
+  - show ip int brief                                     
+  - show run                                              
+                                                          
+interfaces:                                               
+  - int gi1/0                                             
+  - int se2/0                                             
+  - int se2/1                                             
+  - int se2/2                                             
+  - int se2/3                                             
+  - int se2/4                                             
+  - int se2/5                                             
+  - int se2/6                                             
+  - int se2/7                                             

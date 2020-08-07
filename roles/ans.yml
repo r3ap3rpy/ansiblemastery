@@ -1,0 +1,3 @@
+---
+packages: "ansible, epel-release, python3-devel"
+editor: "nano, vi, vim"

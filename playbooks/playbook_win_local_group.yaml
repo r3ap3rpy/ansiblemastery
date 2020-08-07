@@ -1,0 +1,9 @@
+---
+- hosts: 2019A
+  become: no
+  gather_facts: no
+  tasks:
+  - name: "Lets provision a group(s)!"
+    win_group:
+      name: "{{item}}"
+    with_items: "{{default_groups}}"

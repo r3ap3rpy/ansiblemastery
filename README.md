@@ -27,5 +27,6 @@ The following guides will be available.
 - [Jinja2](/guides/jinja.md)
 - [CMDB](/guides/anscmdb.md)
 - [Docker](/guides/docker.md)
+- [AWX](/guides/awx.md)
 
 ![intro](/pics/Intro.png)

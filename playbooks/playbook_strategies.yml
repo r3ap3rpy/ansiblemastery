@@ -1,0 +1,10 @@
+---
+- hosts: lin
+  gather_facts: no
+  tasks:
+  - name: "First"
+    command: whoami
+  - name: "Second"
+    command: uptime
+  - name: "Third"
+    command: df -h
