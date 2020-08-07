@@ -29,4 +29,7 @@ The following guides will be available.
 - [Docker](/guides/docker.md)
 - [AWX](/guides/awx.md)
 
+The official course can be seen here [ansiblemastery](https://www.udemy.com/course/ansible-mastery)
+
 ![intro](/pics/Intro.png)
+
